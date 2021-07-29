@@ -1,0 +1,365 @@
+<html>
+<head>
+
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/7.15.5/firebase-app.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/7.15.5/firebase-auth.js"></script>
+        <script defer src="/__/firebase/7.15.5/firebase-database.js"></script>
+        <script defer src="/__/firebase/7.15.5/firebase-messaging.js"></script>
+        <script defer src="/__/firebase/7.15.5/firebase-storage.js"></script>
+    
+        <!-- initialize the SDK after all desired features are loaded -->
+        <script defer src="/__/firebase/init.js"></script>
+
+        <script src="\CanvasJS\canvasjs.min.js"></script>
+        <script src="\ChartJS\Chart.js"></script>
+        
+<script>
+window.onload = function () {
+
+    var canvas = document.getElementById('grafico');
+    var canvas2 = document.getElementById('grafico2');
+    
+
+    var weekday = new Array(7);
+    weekday[0] = "Dom";
+    weekday[1] = "Seg";
+    weekday[2] = "Ter";
+    weekday[3] = "Qua";
+    weekday[4] = "Qui";
+    weekday[5] = "Sex";
+    weekday[6] = "Sab";
+
+
+    
+    var option = {
+            showLines: true,
+            scaleShowValues: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false
+                    }
+                }]
+            }
+    };
+
+
+
+
+
+
+
+    let retrieve = firebase.database().ref("Levas/Champagne");
+
+////////////once() pra ficar mais facil lidar com a database. Apenas once() usa promise.
+
+
+    retrieve.once("value", snap => {
+
+
+        // chartJS
+        var dataTemp = {
+            labels: [],
+            datasets: [{
+                label: "Temperatura",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 1,
+                pointRadius: 0.5,
+                pointHitRadius: 2,
+                data: [],
+                }]
+        };
+
+        var myLineChart = Chart.Line(canvas,{
+            data:   dataTemp,
+            option: option
+        });
+
+
+        let densidade = "";
+        let temperatura = "";
+        let angulo = "";
+        let timestamp;
+        let date;
+        let horas;
+        let dia;
+        let combo;
+        let k = 0;
+
+//// Tudo tem que estar dentro do forEach para repetir pra cada filho da database Leva
+       
+////////////////// Função forEach() propria do firebase
+
+        snap.forEach( function(child) {
+
+            timestamp = child.key;
+            date = new Date(parseInt(timestamp));
+            horas = date.getHours();
+
+            combo = child.val();
+            densidade = "";
+            temperatura = "";
+            angulo = "";
+
+            for(let i=0;i< 30; i++){
+
+
+                if(i<8){
+                    densidade = densidade + combo[i];
+                }
+
+                if(i>10 && i<17){
+                    temperatura = temperatura + combo[i];
+                }
+
+                if(i>20 && i<31){
+                    angulo = angulo + combo[i];
+                }
+
+                
+
+            }
+
+
+
+            myLineChart.data.datasets[0].data[k] = temperatura;
+            myLineChart.data.labels[k] = weekday[date.getDay()] + " " + horas + "h";
+            myLineChart.update();
+            k++;
+
+
+
+        });
+    
+    });
+
+
+
+
+
+//////////////////////////////////////////////////////////////////// Densidade densimetro convencional
+var dataDensimetro = {
+    labels: [],
+        datasets: [{
+            label: "Densidade",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 1,
+            pointRadius: 0.5,
+            pointHitRadius: 2,
+            data: [],
+            }]
+        };
+
+        var myLineChart2 = Chart.Line(canvas2,{
+            data: dataDensimetro,
+            option: option
+        });
+
+
+
+            var date = new Date(1595798587138);
+
+            myLineChart2.data.datasets[0].data[0] = 1.094;
+            myLineChart2.data.labels[0] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1595847581838);
+
+            myLineChart2.data.datasets[0].data[1] = 1.092;
+            myLineChart2.data.labels[1] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1595872588340);
+
+            myLineChart2.data.datasets[0].data[2] = 1.090;
+            myLineChart2.data.labels[2] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1595897178834);
+
+            myLineChart2.data.datasets[0].data[3] = 1.086;
+            myLineChart2.data.labels[3] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1595940732387);
+
+            myLineChart2.data.datasets[0].data[4] = 1.080;
+            myLineChart2.data.labels[4] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1595969817051);
+
+            myLineChart2.data.datasets[0].data[5] = 1.075;
+            myLineChart2.data.labels[5] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1595986762231);
+
+            myLineChart2.data.datasets[0].data[6] = 1.070;
+            myLineChart2.data.labels[6] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596022689658);
+
+            myLineChart2.data.datasets[0].data[7] = 1.062;
+            myLineChart2.data.labels[7] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596047345526);
+
+            myLineChart2.data.datasets[0].data[8] = 1.055;
+            myLineChart2.data.labels[8] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+
+            date = new Date(1596072491902);
+
+            myLineChart2.data.datasets[0].data[9] = 1.052;
+            myLineChart2.data.labels[9] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+
+            date = new Date(1596105585418);
+
+            myLineChart2.data.datasets[0].data[10] = 1.044;
+            myLineChart2.data.labels[10] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596129798468);
+
+            myLineChart2.data.datasets[0].data[11] = 1.042;
+            myLineChart2.data.labels[11] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596152392316);
+
+            myLineChart2.data.datasets[0].data[12] = 1.036;
+            myLineChart2.data.labels[12] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596191589141);
+
+            myLineChart2.data.datasets[0].data[13] = 1.030;
+            myLineChart2.data.labels[13] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596224246240);
+
+            myLineChart2.data.datasets[0].data[14] = 1.025;
+            myLineChart2.data.labels[14] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596246009141);
+
+            myLineChart2.data.datasets[0].data[15] = 1.021;
+            myLineChart2.data.labels[15] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596309836964);
+
+            myLineChart2.data.datasets[0].data[16] = 1.015;
+            myLineChart2.data.labels[16] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596331247232);
+
+            myLineChart2.data.datasets[0].data[17] = 1.014;
+            myLineChart2.data.labels[17] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596368824463);
+
+            myLineChart2.data.datasets[0].data[18] = 1.013;
+            myLineChart2.data.labels[18] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596396651352);
+
+            myLineChart2.data.datasets[0].data[19] = 1.010;
+            myLineChart2.data.labels[19] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596417140057);
+
+            myLineChart2.data.datasets[0].data[20] = 1.008;
+            myLineChart2.data.labels[20] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596453506366);
+
+            myLineChart2.data.datasets[0].data[21] = 1.007;
+            myLineChart2.data.labels[21] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596486206056);
+
+            myLineChart2.data.datasets[0].data[21] = 1.004;
+            myLineChart2.data.labels[21] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596503565953);
+
+            myLineChart2.data.datasets[0].data[21] = 1.003;
+            myLineChart2.data.labels[21] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+            date = new Date(1596541468251);
+
+            myLineChart2.data.datasets[0].data[21] = 1.002;
+            myLineChart2.data.labels[21] = weekday[date.getDay()] + " " + date.getHours() + "h";
+            myLineChart2.update();
+
+
+
+            
+
+}
+</script>
+</head>
+<body>
+
+    <div class="Title" style="font-size: 30px; text-align: center; margin-top: 30px; margin-bottom: 30px;">Temperatura por tempo</div>
+    <div class="resize" style="width: 1890;">
+        <canvas id="grafico" height="100" width="300"></canvas>
+    </div>
+
+    <div class="Title" style="font-size: 30px; text-align: center; margin-top: 30px; margin-bottom: 30px;">Densidade por tempo leva 5L tradicional (Densimetro Convencional)</div>
+    <div class="resize2" style="width: 1890;">
+        <canvas id="grafico2" height="100" width="300"></canvas>
+    </div>
+
+</body>
+</html>

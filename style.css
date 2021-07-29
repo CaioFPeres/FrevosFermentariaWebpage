@@ -1,0 +1,690 @@
+body{
+    margin: 0px;
+}
+
+
+
+@keyframes hide {
+    to   { visibility: hidden; }
+}
+
+@keyframes show{
+    to { visibility: visible;}
+}
+
+
+
+.navBar{
+    height: auto;
+    width: auto;
+    background-color: black;
+    position: relative;
+    min-width: 360px;
+}
+
+.frontLink{
+    display: inline-block;
+    padding-bottom: 30px;
+    padding-left: 35px;
+    padding-top: 30px;
+    font-size: 30px;
+    color: white;
+    position: relative;
+    text-decoration: none;
+}
+
+.buttons{
+    font-size: 23px;
+    color: white;
+    padding-right: 80px;
+    float: right;
+    padding-top: 35px;
+}
+
+
+
+
+.menu-toggle {
+    display: none; /* hide the checkbox */
+}
+
+
+.hamburger1{
+    width:25px;
+    height:3px;
+    background:rgb(175, 89, 19);
+    display:block;
+    position:absolute;
+    transform:translate3d(0,-8px,0);
+}
+
+.hamburger2{
+    width:25px;
+    height:3px;
+    background:rgb(175, 89, 19);
+    display:block;
+    position:absolute;
+    transform:translate3d(0,0,0);
+}
+
+.hamburger3{
+    width:25px;
+    height:3px;
+    background:rgb(175, 89, 19);
+    display:block;
+    position:absolute;
+    transform:translate3d(0,8px,0);
+}
+
+.hitbox{
+    border: 1px solid rgb(175, 89, 19);
+    width: 43px;
+    height: 33px;
+    background:rgba(175, 89, 19, 0.493);
+    border-radius: 20%;
+    display: block;
+    position: absolute;
+    transform: translate3d(-10px,-16px,0);
+    cursor: pointer;
+}
+
+.hitbox:hover{
+    background:rgba(175, 89, 19, 0.685);
+}
+
+.div-hitbox{
+    display: none;
+    position: relative;
+    float: right;
+    margin-right: 65px;
+    margin-top: 47px;
+}
+
+.menu-toggle:checked ~ .buttons{
+    padding-top: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    height: 300px;
+    visibility: visible;
+    animation: show;
+    transition: height 0.4s ease;
+}
+
+.menu-toggle:checked ~ .buttons > a{
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.menu-toggle:checked ~ .buttons > .linkComprar{
+    padding-top: 20px;
+}
+
+.menu-toggle:checked ~ .div-hitbox .menu-toggle-button .hitbox{
+    background:rgba(175, 89, 19, 0.685);
+    box-shadow: 0px 0px 10px 2px gray;
+}
+
+
+
+
+
+
+.frontPic{
+    height: 650px;
+    width: auto;
+    min-width: 360px;
+    max-width: 100%;
+    background-image: url("/src/ursoLR-9.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.frontPicContent{
+    width: 40%;
+    padding-left: 10%;
+    padding-top: 80px;
+}
+
+.logoAbraco{
+    display: block;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 38%;
+    min-width: 200px;
+
+}
+
+.logoAbracoText{
+    line-height: 50px;
+    font-size: 28px;
+    font-family: Poppins,sans-serif;
+    color: white;
+    min-width: 300px;
+    text-align: center;
+}
+
+.blackOverlay{
+    width: auto;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.2);
+}
+
+
+
+
+
+.divisoria{
+    height: auto;
+    width: auto;
+    background-color: black;
+    position: relative;
+    min-width: 360px;
+}
+
+.textoDiv{
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+.slideshow {
+    list-style-type: none;
+}
+  
+/** SLIDESHOW **/
+.slideshow, .slideshow:after { 
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    height: 800px;
+    left: 0px;
+    z-index: 0; 
+}
+
+
+.slideshow li span { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    min-width: 360px;
+    color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    animation: slideshow 12s linear infinite 0s;
+}
+  
+  
+.slideshow li:nth-child(1) span { 
+    background-image: url("/src/hidromeis.jpg");
+}
+.slideshow li:nth-child(2) span { 
+    background-image: url("/src/ursoLR-8.jpg");
+    animation-delay: 3s; 
+}
+.slideshow li:nth-child(3) span { 
+    background-image: url("/src/ursoLR-2.jpg");
+    animation-delay: 6s; 
+}
+.slideshow li:nth-child(4) span { 
+    background-image: url("/src/fotocesto.jpg");
+    animation-delay: 9s; 
+}
+  
+  
+  
+@keyframes slideshow { 
+    0% { opacity: 0; animation-timing-function: ease-in; }
+    8% { opacity: 1; animation-timing-function: ease-out; }
+    17% { opacity: 1 }
+    25% { opacity: 0 }
+    100% { opacity: 0 }
+}
+
+
+
+
+
+.reservaFeita{
+    background-color: rgba(0, 0, 0, 0.541);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: show 2.5s;
+}
+
+
+
+.reservaEscondida{
+    background-color: rgba(0, 0, 0, 0.541);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    visibility: hidden;
+}
+
+.validacao{
+    background-color: rgba(0, 0, 0, 0.541);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: show 2.5s;
+}
+
+.validacaoEscondida{
+    background-color: rgba(0, 0, 0, 0.541);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    visibility: hidden;
+}
+
+.confirmacao{
+    display: block;
+    border: 2px solid rgb(255, 255, 255);
+    max-width: 430px;
+    width: auto;
+    height: 200px;
+    background-color: rgb(207, 118, 46);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 450px;
+}
+
+.ursoConfirmacao{
+    margin-top: 7px;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: right;
+}
+
+.palavra{
+    color: white;
+    font-size: 45px;
+    margin-left: 40px;
+    margin-top: 70px;
+    width: 200px;
+    height: 50px;
+    float: left;
+}
+
+.palavraValidacao{
+    color: white;
+    font-size: 30px;
+    margin-left: 40px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    margin-top: 60px;
+    display: block;
+}
+
+
+
+.backgroundPages{
+    width: auto;
+    height: auto;
+    position: relative;
+    
+    min-width: 360px;
+    max-width: 100%;
+
+    background-image: url("/src/hidromel-xadrez-2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.backgroundPagesContent{
+    padding-bottom: 100px;
+    min-height: 560px;
+}
+
+
+.titulo{
+    padding-top: 75px;
+    font-family: Tahoma, Geneva, sans-serif;
+    padding-bottom: 80px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
+
+.border{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: fit-content;
+    width: auto;
+    padding: 50px 50px 50px 50px;
+    background-color: rgba(0, 0, 0, 0.651);
+    border: 2px solid rgb(175, 89, 19);
+}
+
+.backgroundPagesContent .border .forms .form-group input{
+    color: white;
+    font-size: 30px;
+    font-family: Poppins,sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    border-bottom: 2px solid rgb(175, 89, 19);
+    width:100%;
+}
+
+.formInput::placeholder {
+    color: lightgray;
+}
+
+#produto{
+    color: white;
+    height: 40px;
+    font-size: 15px;
+    background-color: rgba(255, 0, 0, 0);
+    width:100%;
+}
+
+.form-group {
+    padding-bottom: 30px;
+}
+
+.buttonReservar{
+    color: white;
+    font-size: 30px;
+    height: 50px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(175, 89, 19, 0.274);
+    border: 2px solid rgb(175, 89, 19);
+    outline: none;
+    cursor: pointer;
+    display: block;
+    box-shadow: 1px 1px 3px 1px rgb(138, 88, 13);
+}
+
+.buttonReservar:hover{
+    background-color: rgba(175, 89, 19, 0.534);
+}
+
+.buttonReservar:active{
+    box-shadow: -2px -2px 3px 1px rgb(196, 125, 19);
+}
+
+.backgroundPagesContent .forms input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+
+
+
+
+
+.fotoGalera{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    width: 52%;
+    min-width: 350px;
+
+    height: auto;
+    
+    display: block;   /* importante */
+
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 50px;
+
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+.textBorderPages{
+    color: white; 
+    font-size: 26px;
+    width: 48%;
+    min-width: 290px;
+    margin-left: auto; 
+    margin-right: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 40px; 
+    padding-bottom: 80px; 
+    text-align: justify;
+    padding: 20px 30px 20px 30px;
+
+    background-color: rgba(0, 0, 0, 0.651);
+    border: 2px solid rgb(175, 89, 19);
+}
+
+
+
+
+
+
+
+.buttonLeva{
+    color: white;
+    font-size: 25px;
+    height: 50px;
+    width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    text-align: center;
+    background-color: rgba(175, 89, 19, 0.301);
+    border: 2px solid rgb(175, 89, 19);
+    outline: none;
+    cursor: pointer;
+    display: block;
+    font-family: Tahoma, Geneva, sans-serif;
+    box-shadow: 1px 1px 3px 1px rgb(138, 88, 13);
+    text-decoration: none;
+}
+
+.buttonLeva:hover{
+    background-color: rgba(175, 89, 19, 0.897);
+}
+
+.buttonLeva:active{
+    box-shadow: -2px -2px 3px 1px rgb(196, 125, 19);
+}
+
+
+.subtitulo{
+    font-family: Tahoma, Geneva, sans-serif;
+    padding-bottom: 80px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+.galeria{
+    width: auto;
+    text-align: center;
+}
+
+.spanFotos{
+    height: 680px;
+    display: inline-block;
+}
+
+.spanFotos img{
+    margin: 0px;
+    padding-right: 60px;
+    display: inline-block;
+}
+
+.legenda{
+    color:white;
+    width: 360px;
+    display: block;
+    font-size: 160%;
+    text-align: center;
+    position: relative;
+}
+
+
+
+
+
+
+
+.footer{
+    height: auto;
+    width: auto;
+    background-color: black;
+    position: relative;
+    min-width: 360px;
+}
+
+
+.footerContent{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.instaLogo{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 10px;
+    height: 70px;
+    width: auto;
+}
+
+
+.qrText{
+    font-size: 23px;
+    color: white;
+    padding-bottom: 20px;
+}
+
+
+.download{
+    font-size: 22px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+.copyright{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    padding-bottom: 7px;
+}
+
+
+
+@media screen and (max-width: 432px){
+
+    .palavraValidacao{
+        margin-top: 40px;
+    }
+
+    .palavra{
+        margin-left: 15px;
+        margin-top: 60px;
+    }
+
+    .ursoConfirmacao{
+        width: 100px;
+        height: 160px;
+    }
+
+    .confirmacao{
+        height: 180px;
+    }
+}
+
+
+
+@media screen and (max-width: 400px){
+    
+    .frontLink{
+        font-size: 25px;
+        padding-left: 20px;
+    }
+
+    .div-hitbox{
+        margin-top: 43px;
+        margin-right: 50px;
+    }
+
+    .menu-toggle:checked ~ .buttons{
+        height: 320px;
+    }
+
+}
+
+
+@media screen and (max-width: 740px){
+    .spanFotos img{
+        padding-right: 0px;
+    }
+}
+
+
+@media screen and (max-width: 770px){
+    .logoAbraco{
+        margin-left: 50px;
+    }
+}
+
+
+@media screen and (max-width: 1050px) {
+    
+    .buttons > a{
+        display: block;
+        margin-bottom: 30px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .linkComprar{
+        padding-top: 20px;
+    }
+
+    .buttons {
+        height: 0px;
+        padding-right: 0px;
+        background: rgba(255, 255, 255, 0.103);
+        transition: height 0.4s ease;
+        animation: hide 0s 0.7s forwards;
+        float: none;
+        padding-top: 0px;
+    }
+
+    .div-hitbox{display: block;}
+
+}

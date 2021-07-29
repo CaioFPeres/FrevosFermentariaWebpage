@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "iSpindel1Control": {
+      ".write": "auth.uid == 'BqOcDaK8WlcAjwXiU2zkibMcmo52' || auth.uid == 'hThIa6rhaOQtuST19CEKQwyn3vm1' || auth.uid == 'VyAaDKItUCUp08RHAZiuxreDYRk1' || auth.uid == 'G4Pkp7wEusMfgE7irNbLsYjCMnH3' || auth.uid == 'UglpGkCTItZL3XJEADM2UMGFSE82' ",
+    	".read": true
+    },
+    "Reservas": {
+      ".write": true,
+      ".read": "auth.uid == 'BqOcDaK8WlcAjwXiU2zkibMcmo52' || auth.uid == 'hThIa6rhaOQtuST19CEKQwyn3vm1' || auth.uid == 'VyAaDKItUCUp08RHAZiuxreDYRk1' || auth.uid == 'G4Pkp7wEusMfgE7irNbLsYjCMnH3' || auth.uid == 'UglpGkCTItZL3XJEADM2UMGFSE82' "
+    },
+      "iSpindel1": {
+      ".write": true,
+      ".read": true
+    },
+      "Levas": {
+      ".write": true,
+      ".read": true
+    }
+      }
+}

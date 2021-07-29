@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frevo's Fermentaria</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.15.5/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.15.5/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-storage.js"></script>
+
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="App.js"></script>
+    <script src="firebaselogin.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+    <script>
+      window.onload = function () {
+
+        firebase.auth().onAuthStateChanged( user =>{
+
+          if(user){
+            window.location.href = "reservas";
+          }
+
+        });
+      }
+
+
+    </script>
+
+  </head>
+
+  <style>
+
+    .login{
+      text-align: center;
+    }
+
+    .login input{
+      color: white;
+      font-size: 20px;
+      background-color: rgba(0, 0, 0, 0.336);
+      border: 1px solid black;
+      height: 30px;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    .login input::placeholder{
+      color: white;
+      font-size: 18px;
+    }
+
+  </style>
+
+
+
+  <body>
+
+
+    <div class="navBar">
+      
+      <a href="index" class="frontLink">Frevo's Fermentaria</a>
+
+
+      <input type="checkbox" href="#" class="menu-toggle" id="menu-toggle"/>
+      <div class="div-hitbox">
+        <label class="menu-toggle-button" for="menu-toggle">
+          <div class="hamburger1"></div>
+          <div class="hamburger2"></div>
+          <div class="hamburger3"></div>
+          <div class="hitbox"></div>
+        </label>
+      </div>
+
+
+      <div class="buttons">
+        <a class="linkComprar" href="comprar" style="padding-right: 40px; text-decoration: none; color: white;">Comprar</a>
+        <a class="linkQuemSomos" href="quemsomos" style="padding-right: 40px; text-decoration: none; color: white;">Quem Somos</a>
+        <a class="linkLevas" href="levas" style="padding-right: 40px; text-decoration: none; color: white;">Levas</a>
+        <a class="linkGaleria" href="galeria" style="padding-right: 40px; text-decoration: none; color: white;">Galeria</a>
+        <a class="linkContato" href="contato" style="padding-right: 40px; text-decoration: none; color: white;">Contato</a>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="backgroundPages">
+      <div class="blackOverlay">
+        
+        
+        <div class="backgroundPagesContent" style="height: 565px">
+
+
+          <div class="titulo">Area Restrita</div>
+
+          <div class="login">
+            <input id="userLogin" placeholder="Email" onkeyup="enter(event);">
+            <br><br>
+            <input type="password" id="userPass" placeholder="Senha" onkeyup="enter(event);">
+            <br><br>
+            <button type="button" class="buttonReservar" style="width: 300px;" id="submitLogin" onclick="login();">Logar</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+    <div class="footer">
+
+      <div class="footerContent">
+
+
+        <div class="instaDiv">
+          <a href="https://www.instagram.com/frevosfermentaria" target="_blank">
+            <img class="instaLogo" src="/src/instagram.png">
+          </a>
+        </div>
+
+
+        <div class="qrText">Experimente nosso QR Scanner: </div>
+
+
+        <div class="download">
+          <a href="FrevosQRScanner.apk" style="color: #d37305;">Frevo's QR Scanner</a>
+        </div>
+
+        <div class="copyright">Frevo's Fermentaria 2020</div>
+
+
+      </div>
+
+    </div>
+
+
+
+  </body>
+</html>

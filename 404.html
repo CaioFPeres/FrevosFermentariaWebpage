@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pagina não encontrada</title>
+
+  </head>
+
+
+  <style>
+
+
+
+
+
+body{
+    margin: 0px;
+}
+
+
+
+@keyframes hide {
+    to   { visibility: hidden; }
+  }
+
+@keyframes show{
+    to { visibility: visible;}
+}
+
+
+
+.navBar{
+    height: auto;
+    width: auto;
+    background-color: black;
+    position: relative;
+    min-width: 360px;
+}
+
+.frontLink{
+    display: inline-block;
+    padding-bottom: 30px;
+    padding-left: 35px;
+    padding-top: 30px;
+    font-size: 30px;
+    color: white;
+    position: relative;
+    text-decoration: none;
+}
+
+.buttons{
+    font-size: 23px;
+    color: white;
+    padding-right: 80px;
+    float: right;
+    padding-top: 35px;
+}
+
+
+
+
+.menu-toggle {
+    display: none; /* hide the checkbox */
+}
+
+
+.hamburger1{
+    width:25px;
+    height:3px;
+    background:rgb(175, 89, 19);
+    display:block;
+    position:absolute;
+    transform:translate3d(0,-8px,0);
+}
+
+.hamburger2{
+    width:25px;
+    height:3px;
+    background:rgb(175, 89, 19);
+    display:block;
+    position:absolute;
+    transform:translate3d(0,0,0);
+}
+
+.hamburger3{
+    width:25px;
+    height:3px;
+    background:rgb(175, 89, 19);
+    display:block;
+    position:absolute;
+    transform:translate3d(0,8px,0);
+}
+
+.hitbox{
+    border: 1px solid rgb(175, 89, 19);
+    width: 43px;
+    height: 33px;
+    background:rgba(175, 89, 19, 0.493);
+    border-radius: 20%;
+    display: block;
+    position: absolute;
+    transform: translate3d(-10px,-16px,0);
+    cursor: pointer;
+}
+
+.hitbox:hover{
+    background:rgba(175, 89, 19, 0.685);
+}
+
+.div-hitbox{
+    display: none;
+    position: relative;
+    float: right;
+    margin-right: 65px;
+    margin-top: 47px;
+}
+
+.menu-toggle:checked ~ .buttons{
+    padding-top: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    height: 300px;
+    visibility: visible;
+    animation: show;
+    transition: height 0.4s ease;
+}
+
+.menu-toggle:checked ~ .buttons > a{
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.menu-toggle:checked ~ .buttons > .linkComprar{
+    padding-top: 20px;
+}
+
+.menu-toggle:checked ~ .div-hitbox .menu-toggle-button .hitbox{
+    background:rgba(175, 89, 19, 0.685);
+    box-shadow: 0px 0px 10px 2px gray;
+}
+
+
+
+
+
+
+
+
+  .background404{
+      background-color: #e58e3f;
+      width: auto;
+      height: auto;
+      position: relative;
+      min-width: 360px;
+  }
+
+  .background404Content{
+      text-align: center;
+      width: 360px;
+      min-width: 360px;
+      padding-top: 80px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: Tahoma, Geneva, sans-serif;
+      padding-bottom: 80px;
+  }
+
+  .error404{
+      font-size: 80px;
+      color: black;
+      padding-bottom: 30px;
+  }
+
+  .pageNotFound{
+      color: #000000;
+      font-size: 32px;
+      padding-bottom: 30px;
+  }
+
+  .ursoMel{
+      background-image: url("/src/urso-comendo-mel-dudu.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      
+      display: block;
+      height: 400px;
+      width: 360px;
+      position: relative;
+  }
+
+
+
+
+
+
+
+
+  .footer{
+    height: auto;
+    width: auto;
+    background-color: black;
+    position: relative;
+    min-width: 360px;
+}
+
+
+.footerContent{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.instaLogo{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 10px;
+    height: 70px;
+    width: auto;
+}
+
+
+.qrText{
+    font-size: 23px;
+    color: white;
+    padding-bottom: 20px;
+}
+
+
+.download{
+    font-size: 22px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+.copyright{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    padding-bottom: 7px;
+}
+
+
+
+
+
+@media screen and (max-width: 400px){
+    
+    .frontLink{
+        font-size: 25px;
+        padding-left: 20px;
+    }
+
+    .div-hitbox{
+        margin-right: 50px;
+    }
+
+    .menu-toggle:checked ~ .buttons{
+        height: 320px;
+    }
+
+}
+
+
+@media screen and (max-width: 1050px) {
+    
+    .buttons > a{
+        display: block;
+        margin-bottom: 30px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .linkComprar{
+        padding-top: 20px;
+    }
+
+    .buttons {
+        height: 0px;
+        padding-right: 0px;
+        background: rgba(255, 255, 255, 0.103);
+        transition: height 0.4s ease;
+        animation: hide 0s 0.7s forwards;
+        float: none;
+        padding-top: 0px;
+    }
+
+    .div-hitbox{display: block;}
+
+}
+
+
+
+
+  </style>
+
+
+  <body>
+
+
+    <div class="navBar">
+      
+      <a href="http://frevosfermentaria.com.br/" class="frontLink">Frevo's Fermentaria</a>
+
+
+      <input type="checkbox" href="#" class="menu-toggle" id="menu-toggle"/>
+      <div class="div-hitbox">
+        <label class="menu-toggle-button" for="menu-toggle">
+          <div class="hamburger1"></div>
+          <div class="hamburger2"></div>
+          <div class="hamburger3"></div>
+          <div class="hitbox"></div>
+        </label>
+      </div>
+
+
+      <div class="buttons">
+        <a class="linkComprar" href="http://frevosfermentaria.com.br/comprar" style="padding-right: 40px; text-decoration: none; color: white;">Comprar</a>
+        <a class="linkQuemSomos" href="http://frevosfermentaria.com.br/quemsomos" style="padding-right: 40px; text-decoration: none; color: white;">Quem Somos</a>
+        <a class="linkLevas" href="http://frevosfermentaria.com.br/levas" style="padding-right: 40px; text-decoration: none; color: white;">Levas</a>
+        <a class="linkGaleria" href="http://frevosfermentaria.com.br/galeria" style="padding-right: 40px; text-decoration: none; color: white;">Galeria</a>
+        <a class="linkContato" href="http://frevosfermentaria.com.br/contato" style="padding-right: 40px; text-decoration: none; color: white;">Contato</a>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="background404">
+
+        <div class="background404Content">
+
+            <div class="error404">Erro 404!</div>
+            <div class="pageNotFound">Pagina não encontrada!</div>
+            <div class="ursoMel"></div>
+          
+        </div>
+
+        
+    </div>
+
+
+
+
+
+    <div class="footer">
+
+      <div class="footerContent">
+
+
+        <div class="instaDiv">
+          <a href="https://www.instagram.com/frevosfermentaria" target="_blank">
+            <img class="instaLogo" src="/src/instagram.png">
+          </a>
+        </div>
+
+
+        <div class="qrText">Experimente nosso QR Scanner: </div>
+
+
+        <div class="download">
+            <a href="FrevosQRScanner.apk" style="color: #d37305;">Frevo's QR Scanner</a>
+        </div>
+
+        <div class="copyright">Frevo's Fermentaria 2020</div>
+
+
+      </div>
+
+    </div>
+
+
+
+  </body>
+</html>

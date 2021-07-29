@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frevo's Fermentaria</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.15.5/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.15.5/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-storage.js"></script>
+
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="App.js"></script>
+    <script src="cadastrar.js"></script>
+    <script src="listardados.js"></script>
+    <script src="remover.js"></script>
+    <script src="firebaselogin.js"></script>
+    <script src="searchTable.js"></script>
+    <script src="setTemp.js"></script>
+    <script src="downloadList.js"></script>
+    <script src="downloadFile.js"></script> <!-- modelo de download por javascript -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script>
+
+
+      window.onload = function () {
+
+
+        listarDados_CreateEvents();
+
+
+        firebase.auth().onAuthStateChanged( user =>{
+
+          if(!user){
+            window.location.href = "login";
+          }
+
+        });
+      
+      }
+
+
+    </script>
+
+
+  </head>
+
+  <style>
+
+
+    table {
+      width:  1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table, th, tr, td {
+      text-align: middle;
+      color: black;
+      border: 1px solid black;
+    }
+
+    th,td{
+      background-color: rgba(255, 255, 255, 0.637);
+    }
+
+    table{
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .apagarLogout{
+      width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .apagarLogout input::-webkit-inner-spin-button{
+      -webkit-appearance: none;
+    }
+    
+
+  </style>
+
+
+
+  <body>
+
+
+    <div class="navBar" style="min-width: 1200px;">
+      
+      <a href="index" class="frontLink">Frevo's Fermentaria</a>
+
+
+      <input type="checkbox" href="#" class="menu-toggle" id="menu-toggle"/>
+      <div class="div-hitbox">
+        <label class="menu-toggle-button" for="menu-toggle">
+          <div class="hamburger1"></div>
+          <div class="hamburger2"></div>
+          <div class="hamburger3"></div>
+          <div class="hitbox"></div>
+        </label>
+      </div>
+
+
+      <div class="buttons">
+        <a class="linkComprar" href="comprar" style="padding-right: 40px; text-decoration: none; color: white;">Comprar</a>
+        <a class="linkQuemSomos" href="quemsomos" style="padding-right: 40px; text-decoration: none; color: white;">Quem Somos</a>
+        <a class="linkLevas" href="levas" style="padding-right: 40px; text-decoration: none; color: white;">Levas</a>
+        <a class="linkGaleria" href="galeria" style="padding-right: 40px; text-decoration: none; color: white;">Galeria</a>
+        <a class="linkContato" href="contato" style="padding-right: 40px; text-decoration: none; color: white;">Contato</a>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="backgroundPages" style="min-width: 1200px;">
+      <div class="blackOverlay">
+        
+        
+        <div class="backgroundPagesContent" style="min-height: 600px; text-align: center; padding-top: 50px;">
+
+
+          <div class="apagarLogout">
+
+
+            <input type="number" id="deleteInput" style="float: left; margin-right: 10px;" placeholder="Apagar Reserva (celular)">
+            <button type="button" id="apagar" style="float: left;" onclick="deleteRecord()">Apagar!</button>
+
+      
+      
+            <button type="button" id="logOut" style="float: right;" onclick="logout()">Logout</button>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+          
+          <input type="text" id="buscar" style="margin-right: 245px;" onkeyup="searchTable()" placeholder="Buscar">
+          <input type="number" id="setTempField" placeholder="Definir Temperatura">
+          <button type="button" style="margin-right: 300px;" id="setTemp" onclick="setTemp()">Set Temp!</button>
+          <button type="button" id="baixarLista" onclick="downloadCSV()">Baixar lista CSV</button>
+            <table style="margin-top: 5px;" id="table">
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Total (R$)</th>
+                <th>Celular</th>
+                <th>Data</th>
+                <th>Vendedor</th>
+                <th>Vendido</th>
+              </tr>
+            </table>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+    <div class="footer" style="min-width: 1200px;">
+
+      <div class="footerContent">
+
+
+        <div class="instaDiv">
+          <a href="https://www.instagram.com/frevosfermentaria" target="_blank">
+            <img class="instaLogo" src="/src/instagram.png">
+          </a>
+        </div>
+
+
+        <div class="qrText">Experimente nosso QR Scanner: </div>
+
+
+        <div class="download">
+          <a href="FrevosQRScanner.apk" style="color: #d37305;">Frevo's QR Scanner</a>
+        </div>
+
+        <div class="copyright">Frevo's Fermentaria 2020</div>
+
+
+      </div>
+
+    </div>
+
+
+
+  </body>
+</html>

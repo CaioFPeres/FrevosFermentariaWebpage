@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frevo's Fermentaria</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.15.5/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.15.5/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.15.5/firebase-storage.js"></script>
+
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="App.js"></script>
+    <script src="cadastrar.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  <body>
+
+
+    <div class="navBar">
+      
+      <a href="index" class="frontLink">Frevo's Fermentaria</a>
+
+
+      <input type="checkbox" href="#" class="menu-toggle" id="menu-toggle"/>
+      <div class="div-hitbox">
+        <label class="menu-toggle-button" for="menu-toggle">
+          <div class="hamburger1"></div>
+          <div class="hamburger2"></div>
+          <div class="hamburger3"></div>
+          <div class="hitbox"></div>
+        </label>
+      </div>
+
+
+      <div class="buttons">
+        <a class="linkComprar" href="comprar" style="padding-right: 40px; text-decoration: none; color: white;">Comprar</a>
+        <a class="linkQuemSomos" href="quemsomos" style="padding-right: 40px; text-decoration: none; color: white;">Quem Somos</a>
+        <a class="linkLevas" href="levas" style="padding-right: 40px; text-decoration: none; color: white;">Levas</a>
+        <a class="linkGaleria" href="galeria" style="padding-right: 40px; text-decoration: none; color: white;">Galeria</a>
+        <a class="linkContato" href="contato" style="padding-right: 40px; text-decoration: none; color: white;">Contato</a>
+      </div>
+
+    </div>
+
+
+
+
+      <div class="backgroundPages">
+        <div class="blackOverlay">
+          <div class="reservaEscondida" id="reservado">
+            <div class="confirmacao">
+            
+              <div class="palavra">Reservado!</div>
+              <img class="ursoConfirmacao" src="/src/happybear.png" width="120" height="180">
+
+            </div>
+          </div>
+          <div class="validacaoEscondida" id="validacao">
+            <div class="confirmacao">
+            
+              <div class="palavraValidacao">Preencha todos os campos! Sem sinais ou pontos.</div>
+
+            </div>
+          </div>
+          <div class="titulo">Comprar</div>
+    
+          <div class="backgroundPagesContent">
+            
+            <div class="border">
+
+              <form class="forms">
+
+                <div class="form-group">
+                  <input type="text" class="formInput" id="nameInput" placeholder="Nome">
+                </div>
+        
+                <div class="form-group">
+                  <input type="number" class="formInput" id="ageInput" placeholder="Idade">
+                </div>
+        
+                <div class="form-group">
+                  <input type="number" class="formInput" id="quantidade" placeholder="Quantidade">
+                </div>
+        
+                <div class="form-group">
+                  <input type="number" class="formInput" id="celular" onkeyup="KeyEvent(event);" placeholder="Celular">
+                </div>
+
+                <div class="form-group">
+                  <select id = "produto">
+                    <option value = "AdU_500">Hidromel Bouchet Abraço de Urso 500ml - 25 Reais</option>
+                  </select>
+                </div>
+
+                <div class="nota" style="color: white; font-size: 17px; width: auto; max-width: 370px;">Obs: <br><br>Trabalhamos com sistema de reservas. Você pode reservar e quando tivermos garrafas disponíveis, entraremos em contato. <br><br> Caso queira alterar a reserva, é só enviar novamente seus dados com a alteração.
+                
+                </div>
+        
+                <br><br>
+                <button type="button" class="buttonReservar" onclick="cadastrar();">Reservar</button>
+                <br><br>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+    <div class="footer">
+
+      <div class="footerContent">
+
+
+        <div class="instaDiv">
+          <a href="https://www.instagram.com/frevosfermentaria" target="_blank">
+            <img class="instaLogo" src="/src/instagram.png">
+          </a>
+        </div>
+
+
+        <div class="qrText">Experimente nosso QR Scanner: </div>
+
+
+        <div class="download">
+          <a href="FrevosQRScanner.apk" style="color: #d37305;">Frevo's QR Scanner</a>
+        </div>
+
+        <div class="copyright">Frevo's Fermentaria 2020</div>
+
+
+      </div>
+
+    </div>
+
+
+
+  </body>
+</html>
