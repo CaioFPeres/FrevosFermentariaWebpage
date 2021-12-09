@@ -27,10 +27,10 @@ function listarDados_CreateEvents(){
 
             i++
 
-            var nome = child.child("Nome").val();
+            let nome = child.child("Nome").val();
             let idade = child.child("Idade").val();
-            let produto = child.child("Produto").val();
-            let quantidade = child.child("Quantidade").val();
+            let hBouchet = child.child("hBouchet").val();
+            let hTradicional = child.child("hTradicional").val();
             let celular = child.child("Celular").val();
             let timestamp = child.child("Timestamp").val();
             let vendedor = child.child("Vendedor").val();
@@ -47,9 +47,7 @@ function listarDados_CreateEvents(){
 
 ///////////////////////////////////// Nova variavel Valor Total
 
-            if(produto == 'AdU_500'){
-                total = quantidade*25;
-            }
+            total = (hBouchet + hTradicional)*30
     
 /////////////////////////////////////  Construir a tabela
 
@@ -74,9 +72,9 @@ function listarDados_CreateEvents(){
             cel1.style.textAlign = "center";
             cel2.innerHTML = idade;
             cel2.style.textAlign = "center";
-            cel3.innerHTML = produto;
+            cel3.innerHTML = hBouchet;
             cel3.style.textAlign = "center";
-            cel4.innerHTML = quantidade;
+            cel4.innerHTML = hTradicional;
             cel4.style.textAlign = "center";
             cel5.innerHTML = total;
             cel5.style.textAlign = "center";

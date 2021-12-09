@@ -1,17 +1,23 @@
-function cadastrar(){
+function reservar(){
 
     var dados = {
         Nome: document.getElementById('nameInput').value,
         Idade: document.getElementById('ageInput').value,
-        Produto: document.getElementById('produto').value,
-        Quantidade: document.getElementById('quantidade').value,
         Celular: document.getElementById('celular').value,
+        hBouchet: parseInt(document.getElementById("hBouchet").value),
+        hTradicional: parseInt(document.getElementById("hTradicional").value),
         Timestamp: firebase.database.ServerValue.TIMESTAMP,
         Vendedor: "-",
         Vendido: false,
     };
 
-    if(dados.Nome.length > 0 && dados.Idade.length > 0 && dados.Quantidade.length > 0 && dados.Celular.length > 0){
+
+    if(dados.Nome.length > 0 && dados.Idade.length > 0 && dados.Celular.length > 0 && ( !isNaN(dados.hBouchet) || !isNaN(dados.hTradicional))){
+
+        if(isNaN(dados.hBouchet))
+            dados.hBouchet = 0;
+        if(isNaN(dados.hTradicional))
+            dados.hTradicional = 0;
 
         firebase.database().ref("Reservas").child(dados.Celular).set(dados);
 
@@ -52,7 +58,7 @@ function KeyEvent(e){
    
     
     if (e.keyCode == 13)
-        cadastrar();
+        reservar();
 
     if (document.getElementById('celular').value.length > 11){
 

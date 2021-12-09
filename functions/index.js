@@ -16,14 +16,13 @@ exports.verificacao = functions.database.ref("Reservas/{pushId}").onUpdate((chan
 
             if(change.before.child("Vendido").val()){
 
-
                 //pegando valores antes de ocorrer a alteração:
                 var dados = {
                     Nome: change.before.child("Nome").val(),
                     Idade: change.before.child("Idade").val(),
-                    Produto: change.before.child("Produto").val(),
-                    Quantidade: change.before.child("Quantidade").val(),
                     Celular: change.before.child("Celular").val(),
+                    hBouchet: change.before.child("hBouchet").val(),
+                    hTradicional: change.before.child("hTradicional").val(),
                     Timestamp: change.before.child("Timestamp").val(),
                     Vendedor: change.before.child("Vendedor").val(),
                     Vendido: change.before.child("Vendido").val(),
@@ -112,7 +111,7 @@ exports.verificacao = functions.database.ref("Reservas/{pushId}").onUpdate((chan
 
 exports.pushNotification = functions.database.ref("Reservas/{pushId}").onCreate((change, context) => {
 
-    var message = { 
+    var message = {
         data: {
             title: 'Reserva feita!',
             body: 'Alguem reservou pelo site!'
